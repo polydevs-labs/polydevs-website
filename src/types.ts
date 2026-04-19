@@ -12,6 +12,7 @@ export type TeamMember = {
   bio: string;
   skills: string[];
   image: string;
+  github: string;
 };
 
 export type ContactLink = {

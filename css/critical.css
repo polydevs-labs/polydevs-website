@@ -17,7 +17,6 @@ body {
   border: 1px solid #e7dfd8 !important;
 }
 
-.hero,
 .section-card {
   background: var(--surface) !important;
   border-radius: 40px !important;

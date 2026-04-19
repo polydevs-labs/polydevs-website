@@ -1,14 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { contactLinks, methodology, navItems, quantFocus, researchFocus, teamMembers, teamTracks } from './data/siteData';
 
 const sectionIds = ['research', 'quant', 'pipeline', 'team', 'contact'] as const;
 
 export function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const teamTrackRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    document.body.dataset.theme = isDarkMode ? 'dark' : 'light';
-  }, [isDarkMode]);
+  const scrollTeam = (direction: 'left' | 'right') => {
+    const track = teamTrackRef.current;
+    if (!track) return;
+    const card = track.querySelector<HTMLElement>('.member-card');
+    if (!card) return;
+    const cardWidth = card.getBoundingClientRect().width;
+    const gap = 14;
+    const amount = cardWidth + gap;
+    track.scrollBy({ left: direction === 'right' ? amount : -amount, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('.nav-item'));
@@ -65,27 +72,14 @@ export function App() {
           ))}
         </div>
       </nav>
-      <button
-        className={`theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
-        type="button"
-        aria-label="Toggle theme"
-        onClick={() => setIsDarkMode((prev) => !prev)}
-      >
-        <span className="theme-track">
-          <span className="theme-knob" />
-          <i className="fas fa-sun theme-icon sun" />
-          <i className="fas fa-moon theme-icon moon" />
-        </span>
-      </button>
 
       <main className="layout-shell">
         <section id="hero" className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">Polydevs Team</p>
             <h1 className="hero-brand">POLYDEVS</h1>
-            <h2 className="hero-subtitle">Research Team for AI Cognitive Systems and Quantitative Intelligence</h2>
+            <h2 className="hero-subtitle">Designing high-quality natural-language AI systems for next-generation users</h2>
             <p>
-              We are a research-first engineering team focused on cognitive AI, applied mathematics, and quant trading systems.
+              Polydevs develops long-horizon autonomous AI and quantitative intelligence systems with a strong focus on reliability, reasoning quality, and production discipline.
             </p>
             <a href="#contact" className="btn-primary">
               Collaborate with the team
@@ -122,7 +116,10 @@ export function App() {
         <section id="pipeline" className="section-card asym left-heavy">
           <div className="section-intro">
             <p className="eyebrow">Research Pipeline</p>
-            <h2>How we execute research to production decisions</h2>
+            <h2>From research hypotheses to production-grade intelligence</h2>
+            <p className="section-text">
+              A disciplined operating flow that turns experimental ideas into measurable, deployable systems.
+            </p>
           </div>
           <ol className="pipeline-list">
             {methodology.map((step) => (
@@ -146,20 +143,34 @@ export function App() {
                 ))}
               </ul>
             </div>
-            <div className="team-grid">
-              {teamMembers.map((member) => (
-                <article key={member.name} className="member-card">
-                  <img src={member.image} alt={member.name} />
-                  <h3>{member.name}</h3>
-                  <p className="member-role">{member.role}</p>
-                  <p className="section-text">{member.bio}</p>
-                  <ul className="pill-list compact">
-                    {member.skills.map((skill) => (
-                      <li key={skill}>{skill}</li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
+            <div className="team-slider-wrap">
+              <div className="team-slider-controls">
+                <button type="button" className="team-nav-btn" aria-label="Previous team members" onClick={() => scrollTeam('left')}>
+                  <i className="fas fa-chevron-left" />
+                </button>
+                <button type="button" className="team-nav-btn" aria-label="Next team members" onClick={() => scrollTeam('right')}>
+                  <i className="fas fa-chevron-right" />
+                </button>
+              </div>
+              <div ref={teamTrackRef} className="team-grid" role="region" aria-label="Team members slider">
+                {teamMembers.map((member) => (
+                  <article key={member.name} className="member-card">
+                    <img src={member.image} alt={member.name} />
+                    <h3>{member.name}</h3>
+                    <p className="member-role">{member.role}</p>
+                    <p className="section-text">{member.bio}</p>
+                    <ul className="pill-list compact">
+                      {member.skills.map((skill) => (
+                        <li key={skill}>{skill}</li>
+                      ))}
+                    </ul>
+                    <a className="member-github-btn" href={member.github} target="_blank" rel="noreferrer">
+                      <i className="fab fa-github" />
+                      <span>GitHub</span>
+                    </a>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
         </section>
