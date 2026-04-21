@@ -77,6 +77,15 @@ export const teamMembers: TeamMember[] = [
     image:
       "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%231f2f46'/><stop offset='100%' stop-color='%23415f8f'/></linearGradient></defs><rect width='240' height='240' fill='url(%23g3)'/><circle cx='72' cy='82' r='42' fill='%23f0a36f' fill-opacity='0.86'/><circle cx='162' cy='154' r='60' fill='%2398b4ff' fill-opacity='0.68'/><path d='M14 178c44-20 88-10 122 12 20 14 44 20 90 14v36H14z' fill='%23ffffff' fill-opacity='0.15'/></svg>",
     github: 'https://github.com/chieukhonggianthu8-commits'
+  },
+  {
+    name: 'Nguyen H. Dinh',
+    role: 'Frontend & UI/UX Engineer',
+    bio: 'Focuses on building intuitive, high-performance web interfaces and interactive data visualizations to deliver complex AI and quantitative models to users.',
+    skills: ['Frontend Architecture', 'Web Development', 'UI/UX Design', 'Data Visualization'],
+    image:
+      "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%231f2f46'/><stop offset='100%' stop-color='%23415f8f'/></linearGradient></defs><rect width='240' height='240' fill='url(%23g3)'/><circle cx='72' cy='82' r='42' fill='%23f0a36f' fill-opacity='0.86'/><circle cx='162' cy='154' r='60' fill='%2398b4ff' fill-opacity='0.68'/><path d='M14 178c44-20 88-10 122 12 20 14 44 20 90 14v36H14z' fill='%23ffffff' fill-opacity='0.15'/></svg>",
+    github: 'https://github.com/HoangAkA123'
   }
 ];
 
