@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
-import { contactLinks, methodology, navItems, quantFocus, researchFocus, teamMembers, teamTracks } from './data/siteData';
+import { contactLinks, methodology, navItems, projects, projectsIntro, quantFocus, researchFocus, teamMembers, teamTracks } from './data/siteData';
 
-const sectionIds = ['research', 'quant', 'pipeline', 'team', 'contact'] as const;
+const sectionIds = ['research', 'quant', 'pipeline', 'projects', 'team', 'contact'] as const;
 
 export function App() {
   const teamTrackRef = useRef<HTMLDivElement | null>(null);
@@ -126,6 +126,34 @@ export function App() {
               <li key={step}>{step}</li>
             ))}
           </ol>
+        </section>
+
+        <section id="projects" className="section-card asym right-heavy projects-section">
+          <div className="project-list">
+            {projects.map((project) => (
+              <article key={project.name} className="project-card">
+                <h3>{project.name}</h3>
+                <p className="section-text">{project.description}</p>
+                <a className="member-github-btn" href={project.href} target="_blank" rel="noreferrer">
+                  <i className="fab fa-github" />
+                  <span>View repository</span>
+                </a>
+              </article>
+            ))}
+          </div>
+          <div className="section-intro">
+            <p className="eyebrow">Projects</p>
+            <h2>{projectsIntro.title}</h2>
+            <p className="section-text">{projectsIntro.description}</p>
+            <ul className="pill-list">
+              {projectsIntro.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+            <a href="#contact" className="btn-primary">
+              Request project brief
+            </a>
+          </div>
         </section>
 
         <section id="team" className="section-card team-section">

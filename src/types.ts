@@ -20,3 +20,9 @@ export type ContactLink = {
   href: string;
   icon: string;
 };
+
+export type ProjectItem = {
+  name: string;
+  description: string;
+  href: string;
+};

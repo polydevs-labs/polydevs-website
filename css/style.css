@@ -412,6 +412,38 @@ body {
   box-shadow: 0 10px 18px rgba(20, 20, 19, 0.06);
 }
 
+.projects-section .project-list {
+  display: grid;
+  gap: 12px;
+}
+
+.project-card {
+  border-radius: 20px;
+  border: 1px solid #e3dbd4;
+  background: #fff;
+  padding: 16px;
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: #d8b9a7;
+  box-shadow: 0 12px 24px rgba(20, 20, 19, 0.08);
+}
+
+.project-card h3 {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.project-card .section-text {
+  margin-top: 8px;
+}
+
+.project-card .member-github-btn {
+  margin-top: 12px;
+}
+
 @media (max-width: 760px) {
   .pipeline-list li {
     padding: 9px 10px;
@@ -653,38 +685,121 @@ body {
 }
 
 @media (max-width: 760px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
   .layout-shell {
     width: calc(100% - 20px);
-    margin: 84px 10px 40px;
+    margin: 96px 10px 40px;
     gap: 14px;
   }
 
   .navbar {
+    top: 10px;
     left: 10px;
     right: 10px;
   }
 
   .nav-pill {
-    width: calc(100vw - 24px);
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 10px;
     overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
-  .team-grid {
-    grid-template-columns: 1fr;
+  .nav-pill::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    flex: 0 0 auto;
+    min-width: 40px;
+    min-height: 40px;
+    justify-content: center;
+    padding: 8px 10px;
   }
 
   .hero,
   .section-card {
-    border-radius: 28px;
-    padding: 20px;
+    border-radius: 24px;
+    padding: 18px;
+  }
+
+  .hero {
+    min-height: calc(100svh - 96px);
+    padding-top: clamp(20px, 6vw, 30px);
+    padding-bottom: clamp(20px, 6vw, 30px);
+  }
+
+  @supports not (height: 100svh) {
+    .hero {
+      min-height: calc(100vh - 96px);
+    }
   }
 
   .hero-brand {
-    font-size: clamp(2.4rem, 14vw, 3.4rem);
+    font-size: clamp(2.8rem, 16vw, 4.2rem);
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.94rem, 4vw, 1.08rem);
+  }
+
+  .section-text {
+    overflow-wrap: anywhere;
+  }
+
+  .pill-list {
+    gap: 8px;
+  }
+
+  .pill-list li,
+  .contact-list a,
+  .member-github-btn {
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .team-slider-controls {
+    justify-content: flex-start;
+  }
+
+  .team-grid {
+    grid-auto-columns: 100%;
+    gap: 12px;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 2px;
+  }
+
+  .team-grid .member-card,
+  .project-card {
+    scroll-snap-align: start;
   }
 
   .section-card::before,
   .section-card::after {
     display: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .layout-shell {
+    width: calc(100% - 16px);
+    margin: 94px 8px 32px;
+  }
+
+  .hero,
+  .section-card {
+    padding: 16px;
+  }
+
+  .team-nav-btn {
+    width: 32px;
+    height: 32px;
   }
 }

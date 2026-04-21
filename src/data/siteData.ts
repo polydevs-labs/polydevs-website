@@ -1,10 +1,22 @@
-import type { ContactLink, FocusArea, NavItem, TeamMember } from '../types';
+import type { ContactLink, FocusArea, NavItem, ProjectItem, TeamMember } from '../types';
+
+export const projectsIntro = {
+  title: 'Selected Projects',
+  description:
+    'We are preparing a dedicated project subpage. For now, this section gives a concise overview of our active directions and current build momentum.',
+  points: [
+    'Autonomous AI systems for long-horizon interaction',
+    'Quantitative intelligence workflows and strategy automation',
+    'Production infrastructure for reliable AI deployment'
+  ]
+};
 
 export const navItems: NavItem[] = [
   { id: 'hero', label: 'Overview', icon: 'fas fa-home' },
   { id: 'research', label: 'Research', icon: 'fas fa-brain' },
   { id: 'quant', label: 'Quant', icon: 'fas fa-chart-line' },
   { id: 'pipeline', label: 'Pipeline', icon: 'fas fa-diagram-project' },
+  { id: 'projects', label: 'Projects', icon: 'fas fa-folder-open' },
   { id: 'team', label: 'Team', icon: 'fas fa-users' },
   { id: 'contact', label: 'Contact', icon: 'fas fa-envelope' }
 ];
@@ -65,6 +77,19 @@ export const teamMembers: TeamMember[] = [
     image:
       "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'><defs><linearGradient id='g3' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%231f2f46'/><stop offset='100%' stop-color='%23415f8f'/></linearGradient></defs><rect width='240' height='240' fill='url(%23g3)'/><circle cx='72' cy='82' r='42' fill='%23f0a36f' fill-opacity='0.86'/><circle cx='162' cy='154' r='60' fill='%2398b4ff' fill-opacity='0.68'/><path d='M14 178c44-20 88-10 122 12 20 14 44 20 90 14v36H14z' fill='%23ffffff' fill-opacity='0.15'/></svg>",
     github: 'https://github.com/chieukhonggianthu8-commits'
+  }
+];
+
+export const projects: ProjectItem[] = [
+  {
+    name: 'polyverse-agent',
+    description: 'A long-horizon autonomous agent framework for reliable natural-language interactions and adaptive decision workflows.',
+    href: 'https://github.com/polydevs-labs/polyverse-agent'
+  },
+  {
+    name: 'quant-agent',
+    description: 'A quantitative intelligence agent focused on market scenario analysis, forecasting, and disciplined strategy execution.',
+    href: 'https://github.com/polydevs-labs/quant-agent'
   }
 ];
 
